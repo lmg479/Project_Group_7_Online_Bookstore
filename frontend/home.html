@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="styles.css">
+      <title>Home</title>
+   </head>
+   <body>
+      <header class="navbar">
+         <div class="logo-container">
+            <img src="logo.jpg" alt="Library Logo" class="header-image">
+            <h2 class="library-title">Online Bookstore</h2>
+         </div>
+         <div class="search-container">
+            <div class="nav-profile-container">
+               <nav class="nav-links">
+                  <ul>
+                     <li><a href="home.html">Home</a></li>
+                     <li><a href="cart.html">Cart</a></li>
+                     <li><a href="review.html">Review</a></li>
+                     <li><a href="#" id="searchButton">Search</a></li>
+                  </ul>
+               </nav>
+               <!-- Profile Icon to the Right -->
+               <div class="profile-icon">
+                  <a href="profile.html">
+                  <img src="profile.jpg" alt="Profile" class="profile-img">
+                  </a>
+               </div>
+            </div>
+         </div>
+      </header>
+
+      <!-- Add a main content container for the search bar -->
+      <main id="mainContent">
+         <!-- Dynamic search bar will appear here -->
+      </main>
+
+      <script>
+         // Add an event listener to the Search button
+         document.getElementById("searchButton").addEventListener("click", function(event) {
+            event.preventDefault(); 
+
+            // Check if the search bar already exists
+            if (document.getElementById("searchBarContainer")) {
+               return;
+            }
+
+            // Create the search bar container
+            const searchBarContainer = document.createElement("div");
+            searchBarContainer.id = "searchBarContainer";
+            searchBarContainer.style.margin = "20px";
+
+            // Create the search input
+            const searchInput = document.createElement("input");
+            searchInput.type = "text";
+            searchInput.placeholder = "Search books...";
+            searchInput.id = "searchInput";
+            searchInput.style.marginRight = "10px";
+
+            // Create a filter dropdown
+            const filterDropdown = document.createElement("select");
+            filterDropdown.id = "filterDropdown";
+            const filterOptions = ["All", "Title", "Author", "Genre"];
+            filterOptions.forEach(option => {
+               const dropdownOption = document.createElement("option");
+               dropdownOption.value = option.toLowerCase();
+               dropdownOption.textContent = option;
+               filterDropdown.appendChild(dropdownOption);
+            });
+
+            // Create the search button
+            const searchSubmitButton = document.createElement("button");
+            searchSubmitButton.textContent = "Search";
+            searchSubmitButton.id = "searchSubmitButton";
+
+            // Append elements to the container
+            searchBarContainer.appendChild(searchInput);
+            searchBarContainer.appendChild(filterDropdown);
+            searchBarContainer.appendChild(searchSubmitButton);
+
+            // Append the search bar to the main content
+            document.getElementById("mainContent").prepend(searchBarContainer);
+
+            // Add event listener to the Search Submit Button
+            searchSubmitButton.addEventListener("click", function() {
+               const query = searchInput.value.trim();
+               const filter = filterDropdown.value;
+               alert(`Searching for "${query}" in "${filter}"`);
+            });
+         });
+      </script>
+   </body>
+</html>

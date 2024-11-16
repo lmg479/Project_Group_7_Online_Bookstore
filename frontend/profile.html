@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>User Profile</title>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Library Logo" class="header-image">
+            <h2 class="library-title">Online Bookstore</h2>
+        </div>
+
+    <div class="search-container">
+    
+        <div class="nav-profile-container">
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="review.html">Review</a></li>
+                </ul>
+            </nav>
+
+            <!-- Profile Icon to the Right -->
+            <div class="profile-icon">
+                <a href="profile.html">
+                    <img src="profile.jpg" alt="Profile" class="profile-img">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Profile Information Section -->
+    <div class="profile-container">
+        <h1>Your Profile</h1>
+        <p><strong>Username:</strong> <span id="username">Placeholder</span></p>
+        <p><strong>Password:</strong> <span id="password">****</span></p>
+        <h2>Liked Books:</h2>
+        <span id="liked-books">Placeholder</span></p>
+    </div>
+
+    <!-- Link for using a different account -->
+    <div class="login-option">
+        <p>Use a different account? <a href="login.html" class="login-link">Click Here.</a></p>
+    </div>
+    
+    <footer>
+        <p>2024 Online Bookstore</p>
+    </footer>
+
+    <script>
+        const userProfile = 
+        {
+            // information is examples for right now
+            username: "exampleUser",
+            password: "examplePassword",
+            likedBooks: []
+        };
+
+        // Populate profile data
+        document.getElementById("username").textContent = userProfile.username;
+        document.getElementById("password").textContent = "****"; // Masked password
+
+        // populate liked books
+        const likedBooksList = document.getElementById("liked-books");
+        likedBooksList.innerHTML = ""; 
+        if (userProfile.likedBooks.length > 0) 
+        {
+            userProfile.likedBooks.forEach(book => 
+            {
+                const bookItem = document.createElement("li");
+                bookItem.textContent = `${book.title} by ${book.author}`;
+                likedBooksList.appendChild(bookItem);
+            });
+        } 
+        else 
+        {
+            likedBooksList.innerHTML = "<li>No Books Yet</li>";
+        }
+    </script>
+</body>
+</html>
+

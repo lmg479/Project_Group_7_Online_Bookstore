@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Login</title>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Library Logo" class="header-image">
+            <h2 class="library-title">Online Bookstore</h2>
+        </div>
+
+        <div class="search-container">
+            <div class="nav-profile-container">
+                <nav class="nav-links">
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                    <li><a href="review.html">Review</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Profile Icon to the Right -->
+                <div class="profile-icon">
+                    <a href="profile.html">
+                        <img src="profile.jpg" alt="Profile" class="profile-img">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="form-container">
+
+        <form id="loginForm" class="login-form">
+            <h1>Login</h1>
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit" class="login-button">Login</button>
+        </form>
+
+        <div class="signup-option">
+            <p>Don't have an account? <a href="create-profile.html"><b>Sign up here.</b></a></p>
+        </div>
+    </div>
+    <footer>
+        <p>2024 Online Bookstore</p>
+    </footer>
+
+    <script>
+        // Handle form submission
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Redirect to the profile page
+            window.location.href = "profile.html";
+        });
+    </script>
+</body>
+</html>
